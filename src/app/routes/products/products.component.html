@@ -1,38 +1,27 @@
 <app-header></app-header>
-<div class="div-filter">
-  <div class="dropdown">
-    <button class="dropdown-button" (click)="activeDropdown()">
-      Categorías
-    </button>
-    <div class="dropdown-content" [ngClass]="{ show: dropdown }">
-      <p
-        class="selected"
-        *ngFor="let category of categories"
-        (click)="selectCategory(category.id)"
-      >
-        {{ category.name }}
-      </p>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropdown-button" (click)="activeDropdownPrice()">
-      Precio
-    </button>
-    <div
-      class="dropdown-content-price"
-      [ngClass]="{ showPrice: dropdownPrice }"
-    >
-      <p class="selected">0 - 50</p>
-      <p class="selected">50 - 100</p>
-      <p class="selected">100 - 150</p>
-      <p class="selected">150 - 200</p>
-      <p class="selected">200 - 250</p>
-    </div>
-  </div>
-</div>
+<app-filters></app-filters>
 <section class="products-section">
-  <app-card-product
-    *ngFor="let product of products"
-    [product]="product"
-  ></app-card-product>
+  <ng-container
+    *ngIf="
+      productServices.showCategory || productServices.showProductsForPrice;
+      else allProducts
+    "
+  >
+    <div class="title">
+      <h2>
+        {{productServices.showCategory ? ` Nuestros Productos de: ${categoryName}` : 'Productos por precio'}}
+      </h2>
+    </div>
+    <app-card-product
+      *ngFor="let product of filteredProducts"
+      [product]="product"
+    ></app-card-product>
+  </ng-container>
+  <ng-template #allProducts>
+    <div class="title"><h2>Nuestros Productos:</h2></div>
+    <app-card-product
+      *ngFor="let product of products"
+      [product]="product"
+    ></app-card-product>
+  </ng-template>
 </section>

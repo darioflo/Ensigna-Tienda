@@ -3,12 +3,22 @@ import { Injectable } from '@angular/core';
 import Product from '../models/Product';
 import Category from '../models/Categories';
 import User from '../models/Users';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   products: Product[];
+
+  //IMPORTANTE OBSERVADOR BEHAVIOR SUBJECT
+  showCategory: boolean;
+  showProductsForPrice: boolean;
+  //En esta variable se van a guardar los valores a los que luego podra acceder otro componente
+  private filteredProductsSubject = new BehaviorSubject<Product[]>([]);
+  //aqui se declara esa variable como un observador
+  filteredProducts$ = this.filteredProductsSubject.asObservable();
+
   readonly URL_PRODUCTS = 'https://api.escuelajs.co/api/v1/products';
   readonly URL_PRODUCT_BY_SLUG =
     'https://api.escuelajs.co/api/v1/products/slug/';
@@ -42,6 +52,9 @@ export class ProductsService {
         images: ['', '', ''],
       },
     ];
+
+    this.showCategory = false;
+    this.showProductsForPrice = false;
   }
 
   getProducts() {
@@ -54,7 +67,14 @@ export class ProductsService {
 
   getProductsByCategory(id: number) {
     console.log(id);
+    this.showCategory = true;
+    this.showProductsForPrice = false;
     return this.http.get<Product[]>(`${this.URL_PRODUCTS_BY_CATEGORY}${id}`);
+  }
+
+  //Una vez hecho el metodo que reciba los productos es necesario hacer uno que guarde ese resultado en el subject
+  updateProductsFilteredByCategory(products: Product[]): void {
+    this.filteredProductsSubject.next(products);
   }
 
   getProductById(id: number) {
@@ -62,9 +82,15 @@ export class ProductsService {
   }
 
   getProductsByRange(min: number, max: number) {
+    this.showProductsForPrice = true;
+    this.showCategory = false;
     return this.http.get<Product[]>(
       `https://api.escuelajs.co/api/v1/products/?price_min=${min}&price_max=${max}`
     );
+  }
+
+  updatedProductsByRange(products: Product[]) {
+    this.filteredProductsSubject.next(products);
   }
 
   getProductBySlug(slug: string) {

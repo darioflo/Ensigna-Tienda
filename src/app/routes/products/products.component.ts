@@ -3,28 +3,31 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { CardProductComponent } from '../../components/card-product/card-product.component';
 import Product from '../../models/Product';
 import { ProductsService } from '../../services/products.service';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
-import Category from '../../models/Categories';
+import { CommonModule, NgFor } from '@angular/common';
+import { FiltersComponent } from '../../components/filters/filters.component';
 @Component({
   selector: 'app-products',
-  imports: [HeaderComponent, CardProductComponent, NgFor, CommonModule],
+  imports: [
+    HeaderComponent,
+    CardProductComponent,
+    NgFor,
+    CommonModule,
+    FiltersComponent,
+  ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
 export class ProductsComponent implements OnInit {
   products: Product[];
-  dropdown: boolean;
-  dropdownPrice: boolean;
-  categories: Category[];
-
-  productsByCategory: Product[];
+  filteredProducts: Product[];
+  categoryName: string;
+  productsRange: string;
 
   constructor(public productServices: ProductsService) {
     this.products = [];
-    this.dropdown = false;
-    this.dropdownPrice = false;
-    this.categories = [];
-    this.productsByCategory = [];
+    this.filteredProducts = [];
+    this.categoryName = '';
+    this.productsRange = '';
   }
 
   ngOnInit(): void {
@@ -37,37 +40,18 @@ export class ProductsComponent implements OnInit {
       },
     });
 
-    this.productServices.getCategories().subscribe({
-      next: (data) => {
-        this.categories = data.slice(0, 5);
-      },
-      error: (error) => {
-        console.log(error);
-      },
+    this.productServices.filteredProducts$.subscribe((filteredData) => {
+      if (this.productServices.showCategory) {
+        console.log(filteredData);
+        this.filteredProducts = filteredData;
+        this.categoryName = filteredData[0].category.name;
+      }
     });
-  }
 
-  selectCategory(categoryId: number): void {
-    console.log(categoryId);
-
-    this.productServices.getProductsByCategory(categoryId).subscribe({
-      next: (data) => {
-        this.productsByCategory = data;
-        console.log(this.productsByCategory);
-      },
-      error: (error) => {
-        console.log(error);
-      },
+    this.productServices.filteredProducts$.subscribe((filteredData) => {
+      if (this.productServices.showProductsForPrice) {
+        this.filteredProducts = filteredData;
+      }
     });
-  }
-
-  activeDropdown() {
-    console.log(this.dropdown);
-    this.dropdown = !this.dropdown;
-  }
-
-  activeDropdownPrice() {
-    console.log(this.dropdownPrice);
-    this.dropdownPrice = !this.dropdownPrice;
   }
 }

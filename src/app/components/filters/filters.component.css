@@ -1,0 +1,89 @@
+.dropdown {
+  display: inline-block;
+  border: 3px solid rgb(236, 223, 204);
+  align-self: flex-end;
+  left: 85%;
+  top: 2rem;
+  width: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown-button {
+  color: rgb(236, 223, 204);
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: rgb(60, 61, 55);
+  width: 100%;
+}
+
+.dropdown-button:hover {
+  background-color: rgb(105, 117, 101);
+}
+
+.dropdown-content,
+.dropdown-content-price {
+  opacity: 0;
+  position: absolute;
+  background-color: rgb(30, 32, 30);
+  min-width: 200px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 19rem;
+  padding: 1rem;
+  gap: 0.3rem;
+  color: rgb(236, 223, 204);
+  border: 3px solid rgb(236, 223, 204);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: a8rem;
+  width: 8rem;
+}
+
+.dropdown-content .selected,
+.dropdown-content-price .selected {
+  color: rgb(236, 223, 204);
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dropdown-content .selected:hover,
+.dropdown-content-price .selected:hover {
+  background-color: rgb(60, 61, 55);
+}
+
+.dropdown-content {
+  opacity: 0;
+}
+
+.dropdown-content-price {
+  opacity: 0;
+}
+
+.dropdown-content-price.showPrice {
+  opacity: 1;
+}
+
+.dropdown-content.show {
+  opacity: 1;
+}
+.div-filter {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 1rem;
+  gap: 0.5rem;
+}
