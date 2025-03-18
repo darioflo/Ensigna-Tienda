@@ -1,10 +1,18 @@
-<div class="card-product">
-  <img class="image" src="https://i.imgur.com/QkIa5tT.jpeg" alt="" />
+<div class="card-product animate__animated animate__backInUp">
+  <img
+    class="image"
+    [src]="
+      product.images[1] ? product.images[0] : 'https://picsum.photos/400/300'
+    "
+    alt="{{ product.title }}"
+  />
   <div class="info-card">
-    <h3>Nombre</h3>
-    <p>slug</p>
-    <p>description</p>
-    <p>category</p>
-    <h4>price</h4>
+    <h3 class="product-name">{{ product.title.slice(0, 15) }}</h3>
+    <p class="product-slug">Slug: {{ product.slug }}</p>
+    <p class="product-description">
+      Descripción: {{ product.description.slice(0, 20) }}
+    </p>
+    <p class="product-category">Categoría: {{ product.category.name }}</p>
+    <h4 class="product-price">Precio: ${{ product.price }}</h4>
   </div>
 </div>
