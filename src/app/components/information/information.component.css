@@ -3,8 +3,8 @@
   height: 70vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   color: rgb(236, 223, 204);
 }
 
@@ -46,4 +46,11 @@
   p {
     font-size: 1.2rem;
   }
+}
+
+.line {
+  width: 90%;
+  background-color: rgb(105, 117, 101);
+  height: 5px;
+  display: block;
 }
