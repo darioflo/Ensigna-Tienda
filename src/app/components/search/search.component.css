@@ -1,0 +1,47 @@
+.input-box {
+  width: 30rem;
+  height: 2.8rem;
+  border: 3px solid rgb(236, 223, 204);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+.input-box input {
+  height: 100%;
+  width: 90%;
+  border: none;
+  background-color: rgb(60, 61, 55);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 0.5rem;
+  color: rgb(236, 223, 204);
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-box input::placeholder {
+  font-size: 1.2rem;
+  color: rgb(236, 223, 204);
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input-box button {
+  width: 10%;
+  height: 100%;
+  border: none;
+  background-color: rgb(236, 223, 204);
+  cursor: pointer;
+}
+
+.input-box button i {
+  font-size: 1.5rem;
+  color: rgb(60, 61, 55);
+}

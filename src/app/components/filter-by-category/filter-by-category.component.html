@@ -1,0 +1,12 @@
+<div class="dropdown">
+  <button class="dropdown-button" (click)="activeDropdown()">Categorías</button>
+  <div class="dropdown-content" [ngClass]="{ show: dropdownCategory }">
+    <p
+      class="selected"
+      *ngFor="let category of categories"
+      (click)="selectCategory(category.id)"
+    >
+      {{ category.name }}
+    </p>
+  </div>
+</div>

@@ -1,30 +1,17 @@
 <div class="div-filter">
-  <div class="dropdown">
-    <button class="dropdown-button" (click)="activeDropdown()">
-      Categorías
-    </button>
-    <div class="dropdown-content" [ngClass]="{ show: dropdown }">
-      <p
-        class="selected"
-        *ngFor="let category of categories"
-        (click)="selectCategory(category.id)"
-      >
-        {{ category.name }}
-      </p>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropdown-button" (click)="activeDropdownPrice()">
-      Precio
-    </button>
-    <div
-      class="dropdown-content-price"
-      [ngClass]="{ showPrice: dropdownPrice }"
-    >
-      <p class="selected" (click)="selectedPriceRange(0, 50)">0 - 25</p>
-      <p class="selected" (click)="selectedPriceRange(25, 50)">25 - 50</p>
-      <p class="selected" (click)="selectedPriceRange(50, 100)">50 - 100</p>
-      <p class="selected" (click)="selectedPriceRange(100, 125)">100 - 125</p>
-    </div>
+  <app-search></app-search>
+  <div class="filters-toggles">
+    <app-filter-by-category
+      [dropdownCategory]="dropdownCategory"
+      [dropdownPrice]="dropdownPrice"
+      (toggleCategory)="toggleCategoryMenu()"
+      (togglePrice)="togglePriceMenu()"
+    ></app-filter-by-category>
+    <app-filter-by-price
+      [dropdownCategory]="dropdownCategory"
+      [dropdownPrice]="dropdownPrice"
+      (toggleCategory)="toggleCategoryMenu()"
+      (togglePrice)="togglePriceMenu()"
+    ></app-filter-by-price>
   </div>
 </div>

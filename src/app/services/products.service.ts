@@ -61,8 +61,12 @@ export class ProductsService {
     return this.http.get<Product[]>(this.URL_PRODUCTS);
   }
 
-  getProductsByName() {
-    return this.http.get<Product[]>(this.URL_PRODUCTS_BY_NAME);
+  getProductsByName(name: string) {
+    return this.http.get<Product[]>(`${this.URL_PRODUCTS_BY_NAME}${name}`);
+  }
+
+  updateProductByName(products: Product[]) {
+    this.filteredProductsSubject.next(products);
   }
 
   getProductsByCategory(id: number) {
