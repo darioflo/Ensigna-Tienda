@@ -14,6 +14,7 @@ export class ProductsService {
   //IMPORTANTE OBSERVADOR BEHAVIOR SUBJECT
   showCategory: boolean;
   showProductsForPrice: boolean;
+  showProductSearched: boolean;
   //En esta variable se van a guardar los valores a los que luego podra acceder otro componente
   private filteredProductsSubject = new BehaviorSubject<Product[]>([]);
   //aqui se declara esa variable como un observador
@@ -55,6 +56,7 @@ export class ProductsService {
 
     this.showCategory = false;
     this.showProductsForPrice = false;
+    this.showProductSearched = false;
   }
 
   getProducts() {
@@ -66,6 +68,9 @@ export class ProductsService {
   }
 
   updateProductByName(products: Product[]) {
+    this.showProductSearched = true;
+    this.showCategory = false;
+    this.showProductsForPrice = false;
     this.filteredProductsSubject.next(products);
   }
 
@@ -73,6 +78,7 @@ export class ProductsService {
     console.log(id);
     this.showCategory = true;
     this.showProductsForPrice = false;
+    this.showProductSearched = false;
     return this.http.get<Product[]>(`${this.URL_PRODUCTS_BY_CATEGORY}${id}`);
   }
 
@@ -88,6 +94,7 @@ export class ProductsService {
   getProductsByRange(min: number, max: number) {
     this.showProductsForPrice = true;
     this.showCategory = false;
+    this.showProductSearched = false;
     return this.http.get<Product[]>(
       `https://api.escuelajs.co/api/v1/products/?price_min=${min}&price_max=${max}`
     );

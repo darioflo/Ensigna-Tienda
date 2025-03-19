@@ -3,13 +3,15 @@
 <section class="products-section">
   <ng-container
     *ngIf="
-      productServices.showCategory || productServices.showProductsForPrice;
+      productServices.showCategory ||
+        productServices.showProductsForPrice ||
+        productServices.showProductSearched;
       else allProducts
     "
   >
     <div class="title">
       <h2>
-        {{productServices.showCategory ? ` Nuestros Productos de: ${categoryName}` : 'Productos por precio:'}}
+        {{productServices.showCategory ? ` Nuestros Productos de: ${categoryName}` : 'Productos por precio:' }}
       </h2>
     </div>
     <app-card-product
@@ -25,3 +27,4 @@
     ></app-card-product>
   </ng-template>
 </section>
+<app-footer></app-footer>

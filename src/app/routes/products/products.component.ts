@@ -5,6 +5,7 @@ import Product from '../../models/Product';
 import { ProductsService } from '../../services/products.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { FiltersComponent } from '../../components/filters/filters.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 @Component({
   selector: 'app-products',
   imports: [
@@ -13,6 +14,7 @@ import { FiltersComponent } from '../../components/filters/filters.component';
     NgFor,
     CommonModule,
     FiltersComponent,
+    FooterComponent,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
