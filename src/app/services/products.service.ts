@@ -20,7 +20,26 @@ export class ProductsService {
   //aqui se declara esa variable como un observador
   filteredProducts$ = this.filteredProductsSubject.asObservable();
 
-  readonly URL_PRODUCTS = 'https://api.escuelajs.co/api/v1/products';
+  private productByNameSubject = new BehaviorSubject<Product[]>([]);
+  productByName$ = this.productByNameSubject.asObservable();
+
+  private productByIdSubject = new BehaviorSubject<Product>({
+    id: 0,
+    title: '',
+    slug: '',
+    price: 0,
+    description: '',
+    category: {
+      id: 0,
+      name: '',
+      image: '',
+      slug: '',
+    },
+    images: ['', '', ''],
+  });
+  productById$ = this.productByIdSubject.asObservable();
+
+  readonly URL_PRODUCTS = ' https://api.escuelajs.co/api/v1/products';
   readonly URL_PRODUCT_BY_SLUG =
     'https://api.escuelajs.co/api/v1/products/slug/';
   readonly URL_CATEGORIES = 'https://api.escuelajs.co/api/v1/categories';
@@ -71,7 +90,7 @@ export class ProductsService {
     this.showProductSearched = true;
     this.showCategory = false;
     this.showProductsForPrice = false;
-    this.filteredProductsSubject.next(products);
+    this.productByNameSubject.next(products);
   }
 
   getProductsByCategory(id: number) {
@@ -88,7 +107,14 @@ export class ProductsService {
   }
 
   getProductById(id: number) {
+    console.log(id);
     return this.http.get<Product>(`${this.URL_PRODUCTS}/${id}`);
+  }
+
+  updateProductById(product: Product) {
+    console.log(product);
+
+    this.productByIdSubject.next(product);
   }
 
   getProductsByRange(min: number, max: number) {

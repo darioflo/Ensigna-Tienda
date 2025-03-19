@@ -1,6 +1,25 @@
 <app-header></app-header>
 <app-filters></app-filters>
-<section class="products-section">
+<ng-container
+  *ngIf="this.productServices.showProductSearched"
+  ;
+  else
+  #elseBlock
+>
+  <section class="products-section">
+    <div class="title">
+      <h2>
+        {{`Resultados de la búsqueda:`}}
+      </h2>
+    </div>
+    <app-card-product
+      *ngFor="let productSearch of productSearched"
+      [product]="productSearch"
+    >
+    </app-card-product>
+  </section>
+</ng-container>
+<section class="products-section" #elseBlock>
   <ng-container
     *ngIf="
       productServices.showCategory ||

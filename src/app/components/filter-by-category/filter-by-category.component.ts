@@ -22,7 +22,7 @@ export class FilterByCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.productServices.getCategories().subscribe({
       next: (data) => {
-        this.categories = data.slice(0, 5);
+        this.categories = data.slice(1, 5);
       },
       error: (error) => {
         console.log(error);

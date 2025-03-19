@@ -1,8 +1,12 @@
-<div class="card-product animate__animated animate__backInUp">
+<div
+  class="card-product animate__animated animate__backInUp"
+  [routerLink]="[`/productDetails/${product.id}`]"
+  (click)="productService.getProductById(product.id)"
+>
   <img
     class="image"
     [src]="
-      product.images[1] ? product.images[0] : 'https://picsum.photos/400/300'
+      product.images[1] ? product.images[1] : 'https://picsum.photos/400/300'
     "
     alt="{{ product.title }}"
   />

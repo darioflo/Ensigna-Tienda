@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
 import Product from '../../models/Product';
@@ -10,6 +10,7 @@ import Product from '../../models/Product';
   styleUrl: './search.component.css',
 })
 export class SearchComponent implements OnInit {
+  //@Output() formSubmited = new EventEmitter<Product[]>(); // pasar datos al componente padre
   form: FormGroup;
   input: FormControl;
   products: Product[];
@@ -28,7 +29,6 @@ export class SearchComponent implements OnInit {
     const searchProduct = this.form.get('input')?.value;
     this.productServices.getProductsByName(searchProduct).subscribe({
       next: (data) => {
-        console.log(data);
         this.productServices.updateProductByName(data);
       },
     });

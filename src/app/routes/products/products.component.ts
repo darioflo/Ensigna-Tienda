@@ -24,18 +24,20 @@ export class ProductsComponent implements OnInit {
   filteredProducts: Product[];
   categoryName: string;
   productsRange: string;
+  productSearched: Product[];
 
   constructor(public productServices: ProductsService) {
     this.products = [];
     this.filteredProducts = [];
     this.categoryName = '';
     this.productsRange = '';
+    this.productSearched = [];
   }
 
   ngOnInit(): void {
     this.productServices.getProducts().subscribe({
       next: (data) => {
-        this.products = data.slice(0, 40);
+        this.products = data.slice(0, 48);
       },
       error: (error) => {
         console.log(error);
@@ -54,6 +56,16 @@ export class ProductsComponent implements OnInit {
       if (this.productServices.showProductsForPrice) {
         this.filteredProducts = filteredData;
       }
+    });
+
+    this.productServices.productByName$.subscribe({
+      next: (data) => {
+        this.productSearched = data;
+        console.log(this.productSearched);
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
 }

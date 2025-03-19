@@ -1,0 +1,17 @@
+<app-header></app-header>
+<section class="product-view" *ngIf="product">
+  <div class="imgs">
+    <img src="{{ product.images[0] }}" alt="" class="img-principal" />
+    <div class="inside-img">
+      <img src="{{ product.images[1] }}" alt="" class="img-extra" />
+      <img src="{{ product.images[2] }}" alt="" class="img-extra" />
+    </div>
+  </div>
+  <div class="info">
+    <h2><b>Nombre:</b> {{ product.title }}</h2>
+    <h4><b>Slug:</b> {{ product.slug }}</h4>
+    <h4><b>Descripción:</b> {{ product.description }}</h4>
+    <h4><b>Categoría:</b> {{ product.category.name }}</h4>
+    <h4><b>Precio:</b> ${{ product.price }}</h4>
+  </div>
+</section>
