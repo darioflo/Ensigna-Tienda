@@ -4,12 +4,14 @@ import Product from '../models/Product';
 import Category from '../models/Categories';
 import User from '../models/Users';
 import { BehaviorSubject } from 'rxjs';
+import Team from '../models/Team';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   products: Product[];
+  team: Team[];
 
   //IMPORTANTE OBSERVADOR BEHAVIOR SUBJECT
   showCategory: boolean;
@@ -55,6 +57,8 @@ export class ProductsService {
   readonly URL_PRODUCTS_BY_CATEGORY =
     'https://api.escuelajs.co/api/v1/products/?categoryId=';
 
+  readonly URL_TEAM = 'https://randomuser.me/api/?results=10';
+
   constructor(private http: HttpClient) {
     this.products = [
       {
@@ -76,6 +80,7 @@ export class ProductsService {
     this.showCategory = false;
     this.showProductsForPrice = false;
     this.showProductSearched = false;
+    this.team = [];
   }
 
   getProducts() {
@@ -152,5 +157,12 @@ export class ProductsService {
 
   getLocations() {
     return this.http.get<Location[]>(this.URL_LOCATIONS);
+  }
+
+  getTeamPersons() {
+    return this.http.get<{
+      results: [];
+      info: {};
+    }>(this.URL_TEAM);
   }
 }

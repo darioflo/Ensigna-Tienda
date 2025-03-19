@@ -9,6 +9,10 @@
   margin-top: 5rem;
 }
 
+.none {
+  display: none;
+}
+
 .footer-content {
   width: 100%;
   display: flex;

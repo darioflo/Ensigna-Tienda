@@ -1,0 +1,74 @@
+.section-team {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+.card-team {
+  width: 20rem;
+  height: 22rem;
+  border: 3px solid rgb(105, 117, 101);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+  background-image: linear-gradient(60deg, rgb(30, 32, 30), rgb(60, 61, 55));
+  position: relative;
+}
+
+.body-section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3.5rem;
+  flex-flow: row wrap;
+}
+
+.title {
+  width: 100%;
+  color: rgb(236, 223, 204);
+  font-size: 3rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.title p {
+  font-size: 1.3rem;
+}
+
+.card-team::after {
+  content: "";
+  width: 12rem;
+  height: 18rem;
+  background-color: rgb(30, 32, 30);
+  position: absolute;
+  left: 8.5rem;
+  top: -1rem;
+  z-index: -1;
+  border-top: 4px solid rgb(105, 117, 101);
+  border-right: 4px solid rgb(105, 117, 101);
+}
+
+.img {
+  border-radius: 50%;
+  border: 3px solid rgb(105, 117, 101);
+  overflow: hidden;
+}
+
+.dates-team {
+  width: 100%;
+  height: 100;
+  color: rgb(236, 223, 204);
+  font-size: 1.5rem;
+}

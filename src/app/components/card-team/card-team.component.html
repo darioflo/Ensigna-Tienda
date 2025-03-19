@@ -1,0 +1,32 @@
+<section class="section-team">
+  <div class="title">
+    <h2>Nuestro equipo:</h2>
+    <p>
+      Nuestro equipo en la tienda de ropa masculina está compuesto por
+      profesionales dedicados que trabajan en conjunto para brindar una
+      experiencia de compra excepcional. Contamos con asesores de ventas atentos
+      y conocedores de las últimas tendencias, encargados de guiar a nuestros
+      clientes en la elección de prendas que se ajusten a su estilo y
+      necesidades. Nuestro responsable de compras selecciona cuidadosamente cada
+      artículo, asegurando la calidad y variedad en nuestras colecciones.
+      Además, el equipo de almacén gestiona eficientemente el inventario para
+      garantizar la disponibilidad de productos. Todos colaboran en un ambiente
+      armonioso, enfocados en satisfacer las expectativas de quienes nos
+      visitan.
+    </p>
+  </div>
+  <div class="body-section">
+    <div class="card-team" *ngFor="let person of persons">
+      <div class="img">
+        <img src="{{ person.picture.large }}" alt="" />
+      </div>
+      <div class="dates-team">
+        <h3>{{ `${person.name.first} ${person.name.last}` }}</h3>
+        <h5>{{ person.email }}</h5>
+        <h5>{{ person.phone }}</h5>
+        <h5>{{ person.cell }}</h5>
+        <h5>{{ person.location.country }}</h5>
+      </div>
+    </div>
+  </div>
+</section>
