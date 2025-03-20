@@ -47,7 +47,6 @@ export class ProductsService {
   readonly URL_CATEGORIES = 'https://api.escuelajs.co/api/v1/categories';
   readonly URL_CATEGORIES_BY_SLUG =
     'https://api.escuelajs.co/api/v1/categories/slug';
-  readonly URL_CLIENTS = 'https://api.escuelajs.co/api/v1/users';
   readonly URL_LOCATIONS = 'https://api.escuelajs.co/api/v1/locations';
   readonly URL_PRODUCTS_BY_NAME =
     'https://api.escuelajs.co/api/v1/products/?title=';
@@ -58,6 +57,8 @@ export class ProductsService {
     'https://api.escuelajs.co/api/v1/products/?categoryId=';
 
   readonly URL_TEAM = 'https://randomuser.me/api/?results=10';
+  readonly URL_CLIENTS = 'https://randomuser.me/api/?results=32';
+  readonly URL_ONLY_CLIENT = 'https://randomuser.me/api/';
 
   constructor(private http: HttpClient) {
     this.products = [
@@ -152,7 +153,10 @@ export class ProductsService {
   }
 
   getClients() {
-    return this.http.get<User[]>(this.URL_CLIENTS);
+    return this.http.get<{
+      results: [];
+      info: {};
+    }>(this.URL_CLIENTS);
   }
 
   getLocations() {
@@ -164,5 +168,12 @@ export class ProductsService {
       results: [];
       info: {};
     }>(this.URL_TEAM);
+  }
+
+  getSingleClient() {
+    return this.http.get<{
+      results: [];
+      info: {};
+    }>(this.URL_ONLY_CLIENT);
   }
 }

@@ -1,1 +1,31 @@
-<app-header> </app-header> <app-footer></app-footer>
+<app-header> </app-header>
+<section class="section-clients">
+  <div class="title">
+    <h2>Nuestros Clientes:</h2>
+    <p>
+      En Ensigna, nuestros clientes son nuestra mayor inspiración. Personas con
+      estilo, que buscan calidad y exclusividad en cada prenda. Nos enorgullece
+      ser parte de su día a día, ayudándolos a expresar su personalidad a través
+      de la moda.
+    </p>
+  </div>
+  <div class="body-section-clients">
+    <div
+      class="card-team"
+      *ngFor="let client of clients"
+      [routerLink]="['/clientDetails', client?.login?.sha256]"
+    >
+      <div class="img">
+        <img [src]="client?.picture?.large" alt="Client Picture" />
+      </div>
+      <div class="dates-team">
+        <h3>{{ client?.name?.first }} {{ client?.name?.last }}</h3>
+        <h5>{{ client?.email }}</h5>
+        <h5>{{ client?.phone }}</h5>
+        <h5>{{ client?.cell }}</h5>
+        <h5>{{ client?.location?.country }}</h5>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

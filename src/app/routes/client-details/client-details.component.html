@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="client-detail">
+  <div class="client" *ngFor="let clientDetails of client">
+    <div class="client-header">
+      <img [src]="clientDetails.picture.large" alt="Client Picture" />
+      <h2>
+        {{ clientDetails.name.title }} {{ clientDetails.name.first }}
+        {{ clientDetails.name.last }}
+      </h2>
+    </div>
+    <div class="client-info">
+      <p><b>Género:</b> {{ clientDetails.gender }}</p>
+      <p><b>Email:</b> {{ clientDetails.email }}</p>
+      <p><b>Teléfono:</b> {{ clientDetails.phone }}</p>
+      <p><b>Celular:</b> {{ clientDetails.cell }}</p>
+      <p><b>Fecha de Nacimiento:</b> {{ clientDetails.dob.date }}</p>
+      <p><b>Edad:</b> {{ clientDetails.dob.age }}</p>
+      <p><b>País:</b> {{ clientDetails.location.country }}</p>
+      <p><b>Estado:</b> {{ clientDetails.location.state }}</p>
+      <p><b>Ciudad:</b> {{ clientDetails.location.city }}</p>
+      <p>
+        <b>Calle:</b> {{ clientDetails.location.street.number }}
+        {{ clientDetails.location.street.name }}
+      </p>
+      <p><b>Código Postal:</b> {{ clientDetails.location.postcode }}</p>
+      <p>
+        <b>Coordenadas:</b> {{ clientDetails.location.coordinates.latitude }},
+        {{ clientDetails.location.coordinates.longitude }}
+      </p>
+      <p>
+        <b>Zona Horaria:</b>
+        {{ clientDetails.location.timezone.description }} ({{
+          clientDetails.location.timezone.offset
+        }})
+      </p>
+      <p><b>Usuario:</b> {{ clientDetails.login.username }}</p>
+      <p><b>UUID:</b> {{ clientDetails.login.uuid }}</p>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { LoginComponent } from './routes/login/login.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { ShopServicesComponent } from './routes/shop-services/shop-services.component';
 import { ProductsDetailsComponent } from './routes/products-details/products-details.component';
+import { ClientDetailsComponent } from './routes/client-details/client-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,4 +18,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'productDetails/:id', component: ProductsDetailsComponent },
+  { path: 'clientDetails/:id', component: ClientDetailsComponent },
 ];
