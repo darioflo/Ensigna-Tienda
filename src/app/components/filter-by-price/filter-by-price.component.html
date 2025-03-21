@@ -2,7 +2,7 @@
   <button class="dropdown-button" (click)="activeDropdownPrice()">
     Precio
   </button>
-  <div class="dropdown-content-price" [ngClass]="{ showPrice: dropdownPrice }">
+  <div class="dropdown-content-price" [ngClass]="{ showPrice: dropdownPrice() }">
     <p class="selected" (click)="selectedPriceRange(0, 50)">0 - 25</p>
     <p class="selected" (click)="selectedPriceRange(25, 50)">25 - 50</p>
     <p class="selected" (click)="selectedPriceRange(50, 100)">50 - 100</p>

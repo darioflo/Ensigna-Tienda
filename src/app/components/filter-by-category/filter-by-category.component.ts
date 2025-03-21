@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit, input, output } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import Category from '../../models/Categories';
 import { NgClass, NgFor } from '@angular/common';
@@ -10,10 +10,10 @@ import { NgClass, NgFor } from '@angular/common';
   styleUrls: ['./filter-by-category.component.css'],
 })
 export class FilterByCategoryComponent implements OnInit {
-  @Input() dropdownCategory!: boolean;
-  @Input() dropdownPrice!: boolean;
-  @Output() toggleCategory = new EventEmitter<void>();
-  @Output() togglePrice = new EventEmitter<void>();
+  readonly dropdownCategory = input.required<boolean>();
+  readonly dropdownPrice = input.required<boolean>();
+  readonly toggleCategory = output<void>();
+  readonly togglePrice = output<void>();
 
   categories: Category[] = [];
 

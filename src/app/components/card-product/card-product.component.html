@@ -1,22 +1,22 @@
 <div
   class="card-product animate__animated animate__backInUp"
-  [routerLink]="[`/productDetails/${product.id}`]"
-  (click)="productService.getProductById(product.id)"
+  [routerLink]="[`/productDetails/${product().id}`]"
+  (click)="productService.getProductById(product().id)"
 >
   <img
     class="image"
     [src]="
-      product.images[1] ? product.images[1] : 'https://picsum.photos/400/300'
+      product().images[1] ? product().images[1] : 'https://picsum.photos/400/300'
     "
-    alt="{{ product.title }}"
+    alt="{{ product().title }}"
   />
   <div class="info-card">
-    <h3 class="product-name">{{ product.title.slice(0, 15) }}</h3>
-    <p class="product-slug">Slug: {{ product.slug }}</p>
+    <h3 class="product-name">{{ product().title.slice(0, 15) }}</h3>
+    <p class="product-slug">Slug: {{ product().slug }}</p>
     <p class="product-description">
-      Descripción: {{ product.description.slice(0, 20) }}
+      Descripción: {{ product().description.slice(0, 20) }}
     </p>
-    <p class="product-category">Categoría: {{ product.category.name }}</p>
-    <h4 class="product-price">Precio: ${{ product.price }}</h4>
+    <p class="product-category">Categoría: {{ product().category.name }}</p>
+    <h4 class="product-price">Precio: ${{ product().price }}</h4>
   </div>
 </div>

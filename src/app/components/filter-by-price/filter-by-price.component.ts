@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit, input, output } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { NgClass } from '@angular/common';
 
@@ -9,10 +9,10 @@ import { NgClass } from '@angular/common';
   styleUrls: ['./filter-by-price.component.css'],
 })
 export class FilterByPriceComponent implements OnInit {
-  @Input() dropdownCategory!: boolean;
-  @Input() dropdownPrice!: boolean;
-  @Output() toggleCategory = new EventEmitter<void>();
-  @Output() togglePrice = new EventEmitter<void>();
+  readonly dropdownCategory = input.required<boolean>(); //Nuevas formas de tratar los inputs
+  readonly dropdownPrice = input.required<boolean>();
+  readonly toggleCategory = output<void>(); // y los outputs en ANGULAR
+  readonly togglePrice = output<void>();
 
   constructor(public productServices: ProductsService) {}
 
