@@ -19,7 +19,7 @@ export class CardTeamComponent implements OnInit {
   ngOnInit(): void {
     this.productServices.getTeamPersons().subscribe({
       next: (data) => {
-        this.persons = data.results.slice(0, 8);
+        this.persons = data.results.slice(0, 9);
         console.log(this.persons);
       },
       error: (error) => {
