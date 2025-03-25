@@ -1,7 +1,7 @@
-export default interface Location {
-  id: number;
-  name: string;
+export default interface LocationShop {
   description: string;
+  id: number;
   latitude: number;
   longitude: number;
+  name: string;
 }

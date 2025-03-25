@@ -5,6 +5,7 @@ import Category from '../models/Categories';
 import User from '../models/Users';
 import { BehaviorSubject } from 'rxjs';
 import Team from '../models/Team';
+import LocationShop from '../models/Locations';
 
 @Injectable({
   providedIn: 'root',
@@ -160,7 +161,7 @@ export class ProductsService {
   }
 
   getLocations() {
-    return this.http.get<Location[]>(this.URL_LOCATIONS);
+    return this.http.get<LocationShop[]>(this.URL_LOCATIONS);
   }
 
   getTeamPersons() {

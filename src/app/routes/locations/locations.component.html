@@ -1,1 +1,8 @@
-<app-header> </app-header> <app-footer></app-footer>
+<app-header> </app-header>
+<div class="section-location">
+  <div class="location-box" *ngFor="let location of locations">
+    <p>Nombre:{{ location.name }}</p>
+    <p>Descripción: {{ location.description }}</p>
+  </div>
+</div>
+<app-footer></app-footer>
