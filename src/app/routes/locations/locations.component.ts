@@ -21,7 +21,7 @@ export class LocationsComponent implements OnInit {
   ngOnInit(): void {
     this.productServices.getLocations().subscribe({
       next: (data) => {
-        this.locations = data;
+        this.locations = data.slice(0, 8);
         console.log(data);
       },
       error: (error) => {

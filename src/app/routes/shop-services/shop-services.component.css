@@ -1,0 +1,38 @@
+.section-services {
+  width: 100%;
+  padding: 3rem 2rem;
+  background-color: rgb(30, 32, 30);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.services-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.service {
+  width: 45%;
+  background-color: rgb(60, 61, 55);
+  border: 3px solid rgb(105, 117, 101);
+  border-radius: 10px;
+  padding: 2rem;
+  color: rgb(236, 223, 204);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.service h3 {
+  font-size: 1.8rem;
+  color: rgb(105, 117, 101);
+  margin-bottom: 1rem;
+}
+
+.service p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
