@@ -1,1 +1,40 @@
-<p>register works!</p>
+<app-header></app-header>
+<section class="section-register">
+  <form action="" class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2>Crear cuenta:</h2>
+    <input
+      type="text"
+      formControlName="nombre"
+      placeholder="Nombre"
+      id="name"
+    />
+    <input
+      type="text"
+      formControlName="nombreUsuario"
+      id="user-name"
+      placeholder="Nombre de usuario"
+    />
+    <input
+      type="email"
+      formControlName="correo"
+      id="email"
+      placeholder="Correo"
+    />
+    <input
+      type="password"
+      formControlName="clave"
+      id="passw"
+      placeholder="Contraseña"
+    />
+    <input
+      type="password"
+      formControlName="confirmarClave"
+      id="confirmpass"
+      placeholder="Confirmar contraseña"
+    />
+    <div class="controls">
+      <input type="submit" value="Crear cuenta" />
+      <input type="reset" name="" id="" />
+    </div>
+  </form>
+</section>

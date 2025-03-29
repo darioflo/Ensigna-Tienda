@@ -1,0 +1,91 @@
+.section-register {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(30, 32, 30);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.form {
+  width: 30rem;
+  background-color: rgb(60, 61, 55);
+  border: 2px solid rgb(105, 117, 101);
+  border-radius: 15px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: rgb(236, 223, 204);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid rgb(105, 117, 101);
+  border-radius: 8px;
+  background-color: rgb(30, 32, 30); /* Fondo oscuro por defecto */
+  color: rgb(236, 223, 204);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.form input[type="text"]:focus,
+.form input[type="email"]:focus,
+.form input[type="password"]:focus {
+  border-color: rgb(236, 223, 204);
+  box-shadow: 0 0 8px rgba(236, 223, 204, 0.5);
+  outline: none;
+  background-color: rgb(60, 61, 55); /* Fondo más claro al enfocar */
+}
+
+.form input[type="text"]:not(:focus),
+.form input[type="email"]:not(:focus),
+.form input[type="password"]:not(:focus) {
+  background-color: rgb(30, 32, 30); /* Fondo oscuro cuando no está enfocado */
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.controls input[type="submit"],
+.controls input[type="reset"] {
+  width: 48%;
+  padding: 0.8rem;
+  border: 2px solid rgb(105, 117, 101);
+  border-radius: 8px;
+  background-color: rgb(30, 32, 30);
+  color: rgb(236, 223, 204);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.controls input[type="submit"]:hover,
+.controls input[type="reset"]:hover {
+  background-color: rgb(105, 117, 101);
+  color: rgb(30, 32, 30);
+  transform: translateY(-2px);
+}
+
+.controls input[type="submit"]:active,
+.controls input[type="reset"]:active {
+  transform: translateY(0);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}

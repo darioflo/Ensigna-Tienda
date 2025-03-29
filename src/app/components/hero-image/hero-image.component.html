@@ -1,7 +1,9 @@
 <section class="hero-image">
   <div class="opacity">
     <div class="hero-content">
-      <h1 class="animate__animated animate__backInLeft">Ensigna</h1>
+      <h1 class="animate__animated animate__backInLeft">
+        {{nombreUsuario ? `Hola ${nombreUsuario}` : "Ensigna"}}
+      </h1>
       <h2 class="animate__animated animate__backInRight">
         Moda para el hombre contemporáneo
       </h2>

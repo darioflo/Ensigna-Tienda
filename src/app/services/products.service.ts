@@ -26,6 +26,9 @@ export class ProductsService {
   private productByNameSubject = new BehaviorSubject<Product[]>([]);
   productByName$ = this.productByNameSubject.asObservable();
 
+  private userNameSubject = new BehaviorSubject<string>('');
+  userName$ = this.userNameSubject.asObservable();
+
   private productByIdSubject = new BehaviorSubject<Product>({
     id: 0,
     title: '',
@@ -176,5 +179,9 @@ export class ProductsService {
       results: [];
       info: {};
     }>(this.URL_ONLY_CLIENT);
+  }
+
+  setUserName(name: string): void {
+    this.userNameSubject.next(name);
   }
 }
