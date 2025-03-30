@@ -8,7 +8,7 @@ import { ProductsService } from '../../services/products.service';
   styleUrl: './hero-image.component.css',
 })
 export class HeroImageComponent implements OnInit {
-  nombreUsuario: string | null;
+  nombreUsuario: string | undefined;
 
   constructor(public productService: ProductsService) {
     this.nombreUsuario = '';

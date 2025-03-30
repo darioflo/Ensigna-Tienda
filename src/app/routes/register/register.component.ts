@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   ReactiveFormsModule,
+  NonNullableFormBuilder,
+  FormControl,
 } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
 import { HeaderComponent } from '../../components/header/header.component';
 
+type Form = FormGroup<{
+  nombre: FormControl<string>;
+  nombreUsuario: FormControl<string>;
+  correo: FormControl<string>;
+  clave: FormControl<string>;
+  confirmarClave: FormControl<string>;
+}>;
 @Component({
   selector: 'app-register',
   imports: [ReactiveFormsModule, HeaderComponent],
@@ -15,39 +24,24 @@ import { HeaderComponent } from '../../components/header/header.component';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  form: FormGroup<any>;
+  //Esta linea permitira que nada de lo que se envie en el formulario sera null
+  formBuilder = inject(NonNullableFormBuilder);
+  //inject en Angular se utiliza para inyectar servicios o dependencias dentro de componentes,
+  //  directivas o funciones sin necesidad de pasarlos a través del constructor.
+  private productServices = inject(ProductsService);
 
-  constructor(
-    private fb: FormBuilder,
-    public productServices: ProductsService
-  ) {
-    this.form = this.fb.group(
-      {
-        nombre: ['', [Validators.required, Validators.minLength(3)]],
-        nombreUsuario: ['', [Validators.required, Validators.minLength(5)]],
-        correo: ['', [Validators.required, Validators.email]],
-        clave: ['', [Validators.required, Validators.minLength(6)]],
-        confirmarClave: ['', [Validators.required]],
-      },
-      { validator: this.checkPasswords }
-    );
-  }
+  form: Form = this.formBuilder.group({
+    nombre: this.formBuilder.control(''),
+    nombreUsuario: this.formBuilder.control(''),
+    correo: this.formBuilder.control(''),
+    clave: this.formBuilder.control(''),
+    confirmarClave: this.formBuilder.control(''),
+  });
 
-  checkPasswords(group: FormGroup) {
-    const pass = group.get('clave')?.value;
-    const confirmPass = group.get('confirmarClave')?.value;
-    return pass === confirmPass ? null : { notSame: true };
-  }
-
-  onSubmit(): void {
-    if (this.form.valid) {
-      console.log(this.form.value);
-      this.productServices.setUserName(this.form.value.nombre);
-    } else {
-      console.log('Invalido');
-      console.log(this.form.value.nombre);
-      this.productServices.setUserName(this.form.value.nombre);
-      this.form.reset();
-    }
+  onSubmit() {
+    console.log(this.form.value);
+    this.productServices.setUserName(this.form.value.nombre);
+    this.form.reset();
+    console.log(this.form.valid);
   }
 }

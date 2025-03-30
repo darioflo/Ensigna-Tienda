@@ -26,7 +26,7 @@ export class ProductsService {
   private productByNameSubject = new BehaviorSubject<Product[]>([]);
   productByName$ = this.productByNameSubject.asObservable();
 
-  private userNameSubject = new BehaviorSubject<string>('');
+  private userNameSubject = new BehaviorSubject<string | undefined>('');
   userName$ = this.userNameSubject.asObservable();
 
   private productByIdSubject = new BehaviorSubject<Product>({
@@ -181,7 +181,7 @@ export class ProductsService {
     }>(this.URL_ONLY_CLIENT);
   }
 
-  setUserName(name: string): void {
+  setUserName(name: string | undefined): void {
     this.userNameSubject.next(name);
   }
 }
