@@ -116,15 +116,15 @@ export class ProductsService {
     this.filteredProductsSubject.next(products);
   }
 
-  getProductById(id: number) {
-    console.log(id);
-    return this.http.get<Product>(`${this.URL_PRODUCTS}/${id}`);
-  }
-
   updateProductById(product: Product) {
     console.log(product);
 
     this.productByIdSubject.next(product);
+  }
+
+  getProductById(id: number) {
+    console.log(id);
+    return this.http.get<Product>(`${this.URL_PRODUCTS}/${id}`);
   }
 
   getProductsByRange(min: number, max: number) {
