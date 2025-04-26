@@ -38,4 +38,7 @@ export class FilterByPriceComponent implements OnInit {
   uno() {
     console.log(1);
   }
+  dos() {
+    console.log(2);
+  }
 }
