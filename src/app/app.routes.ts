@@ -17,6 +17,15 @@ export const routes: Routes = [
   { path: 'shopServices', component: ShopServicesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'productDetails/:id', component: ProductsDetailsComponent },
+  {
+    path: 'productDetails/:id',
+    component: ProductsDetailsComponent,
+    data: {
+      renderMode: 'pre',
+      getPrerenderParams: () => {
+        return [{ id: '1' }, { id: '2' }, { id: '3' }];
+      },
+    },
+  },
   { path: 'clientDetails/:id', component: ClientDetailsComponent },
 ];
