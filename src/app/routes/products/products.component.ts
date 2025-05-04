@@ -14,7 +14,6 @@ import { FooterComponent } from '../../components/footer/footer.component';
     NgFor,
     CommonModule,
     FiltersComponent,
-    FooterComponent,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
