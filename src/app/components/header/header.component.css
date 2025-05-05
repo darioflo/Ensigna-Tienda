@@ -1,12 +1,3 @@
-.header-box {
-  width: 100%;
-  height: 25vh;
-  background-color: rgb(105, 117, 101);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-}
 .social-media {
   width: 20%;
   display: flex;
